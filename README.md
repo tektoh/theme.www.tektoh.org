@@ -1,11 +1,10 @@
 Wordpress theme
 ===============
 
-
 初期設定
 --------
 
-### Git ###
+### git ###
     git submodule init
     git submodule update
 
@@ -13,6 +12,10 @@ Wordpress theme
     npm install less
     npm install coffee-script
     npm install yuicompressor
+
+### Wordpress ###
+* メニューを作る (外観 >> メニュー)
+
 
 TODO
 ----
