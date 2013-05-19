@@ -17,7 +17,7 @@
                         </div><!-- /.entry-attachment -->
                         
                         <div class="entry-description attachment-image-description">
-                            {the_content}
+                            {the_content}{/the_content}
                             {wp_link_pages before='<div class="page-links">ページ' after='</div>'}
                         </div><!-- /.entry-description -->
                         
