@@ -1,0 +1,138 @@
+
+@chaset "utf-8";
+@import "../libs/bootstrap/less/bootstrap.less";
+@import "../libs/bootstrap/less/responsive.less";
+
+#main {
+  padding-top: 20px;
+}
+
+.copyright {
+  text-align: center;
+}
+
+.author-info{
+  margin: 60px 0;
+}
+
+body.tag {
+  color: @grayDark;
+}
+
+.comment-reply-link {
+    .btn;
+    .btn-mini;
+    .btn-danger;
+}
+
+.form-submit {
+    input[type=submit] {
+        .btn;
+        .btn-large;
+        .btn-primary;
+    }
+}
+
+.border-box {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h1 {
+  a {
+    color: @textColor;
+    &:hover {
+      color: @textColor;
+    }
+  }
+}
+
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-article {
+    border-bottom: 4px double #ededed;
+    padding-bottom: 2em;
+    margin-bottom: 5em;
+}
+
+ul.gallery {
+    .clearfix;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    > li {
+        float: left;
+        margin: 0;
+        padding: 0;
+        .gallery-img-wrap {
+            margin: 0;
+            padding: 0;
+            .border-box;
+            border: @grayLighter solid 1px;
+            .border-radius(@baseBorderRadius);
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            &:hover {
+                border: @linkColor solid 1px;
+                .box-shadow(0 1px 4px rgba(0,105,214,.25));
+            }
+        }
+        img {
+            .aligncenter;
+        }
+        @media (max-width: 480px) {
+            .gallery-caption {
+                .hidden;
+            }
+        }
+    }
+}
+
+img.attachment-post-thumbnail {
+    .img-rounded;
+    .aligncenter;
+}
+
+img.attachment-image {
+    display: block;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h1.attachment-image-title {
+    text-align: center;
+}
+
+.attachment-image-meta {
+    text-align: center;
+}
+
+.attachment-image-caption {
+    .muted;
+    .aligncenter;
+    text-align: center;
+    max-width: 768px;
+}
+
+.attachment-image-description {
+    max-width: 768px;
+    .aligncenter;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+

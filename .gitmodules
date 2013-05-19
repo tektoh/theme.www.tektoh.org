@@ -1,0 +1,12 @@
+[submodule "libs/smarty"]
+	path = libs/smarty
+	url = git://github.com/cebe/smarty.git
+[submodule "libs/lessphp"]
+	path = libs/lessphp
+	url = git://github.com/leafo/lessphp.git
+[submodule "libs/bootstrap"]
+	path = libs/bootstrap
+	url = git://github.com/twitter/bootstrap.git
+[submodule "libs/FortAwesome"]
+	path = libs/FortAwesome
+	url = git://github.com/FortAwesome/Font-Awesome.git
