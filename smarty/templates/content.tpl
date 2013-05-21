@@ -2,11 +2,13 @@
   <header class="entry-header">
     {the_post_thumbnail}
     {if is_single()}
-      <h1 class="entry-title">{the_title}</h1>
+        <div class="page-header">
+            <h1 class="entry-title">{the_title}</h1>
+        </div>
     {else}
-      <h1>
-        <a href="{the_permalink}" title="{the_title}" rel="bookmark">{the_title}</a>
-      </h1>
+        <h1>
+            <a href="{the_permalink}" title="{the_title}" rel="bookmark">{the_title}</a>
+        </h1>
     {/if}
   </header>
   {if is_search()}
