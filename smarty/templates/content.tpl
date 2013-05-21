@@ -19,6 +19,7 @@
         続きを読む <span class="meta-nav">&rarr;</span>
       {/the_content}
       {wp_link_pages before='<div class="page-links">ページ:' after='</div>'}
+    </div>
   {/if}
   <footer class="entry-meta">
     カテゴリー: {get_the_category_list separator=', '} |
