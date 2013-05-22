@@ -2,5 +2,5 @@
 .c9revisions
 tmp
 node_modules/*
-marty/templates_c
-marty/cache
+smarty/templates_c/*
+smarty/cache/*
