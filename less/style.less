@@ -83,6 +83,9 @@ ul.gallery {
             .border-box;
             border: @grayLighter solid 1px;
             .border-radius(@baseBorderRadius);
+            @media (max-width: 767px) {
+                .border-radius(1px);
+            }
             display: table-cell;
             vertical-align: middle;
             text-align: center;
