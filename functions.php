@@ -522,7 +522,6 @@ function theme_scripts_styles() {
     wp_enqueue_script('theme-script', get_template_directory_uri().'/js/script.min.js', array(), '1.0', true);
 
     wp_enqueue_style('theme-style', get_stylesheet_uri());
-    wp_enqueue_style('theme-style-fontawesome', get_template_directory_uri().'/libs/FortAwesome/css/font-awesome.min.css', array(), false, 'all');
 }
 add_action('wp_enqueue_scripts', 'theme_scripts_styles');
 
