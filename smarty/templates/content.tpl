@@ -6,9 +6,9 @@
             <h1 class="entry-title">{the_title}</h1>
         </div>
     {else}
-        <h1>
+        <h2>
             <a href="{the_permalink}" title="{the_title}" rel="bookmark">{the_title}</a>
-        </h1>
+        </h2>
     {/if}
   </header>
   {if is_search()}
