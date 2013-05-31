@@ -7,7 +7,7 @@ do ($ = window.jQuery) ->
             $element.each ->
                 $element.css({
                     'max-height': (height-61-60-20)+'px'
-                });
+                })
 
         $(window).resize resize
         setTimeout resize, 0

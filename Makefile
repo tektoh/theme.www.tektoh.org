@@ -24,8 +24,8 @@ js/script.min.js: js/script.js
 js/bootstrap.min.js: js/bootstrap.js
 	$(YUICOMPRESSOR) $(JSCOMPRESSFLAGS) $< -o $@
 
-js/script.js: js/carousel.js js/gallery.js js/image.js
-	cat js/carousel.js js/gallery.js js/image.js > $@
+js/script.js: js/carousel.js js/gallery.js js/image.js js/scroll.js
+	cat js/carousel.js js/gallery.js js/image.js js/scroll.js > $@
 
 js/carousel.js: coffee/carousel.coffee
 	$(COFFEE) $(COFFEEFLAGS) -o js $<
@@ -34,6 +34,9 @@ js/gallery.js: coffee/gallery.coffee
 	$(COFFEE) $(COFFEEFLAGS) -o js $<
 
 js/image.js: coffee/image.coffee
+	$(COFFEE) $(COFFEEFLAGS) -o js $<
+
+js/scroll.js: coffee/scroll.coffee
 	$(COFFEE) $(COFFEEFLAGS) -o js $<
 
 js/bootstrap.js:

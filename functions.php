@@ -357,7 +357,8 @@ function comment_form_defaults_filter($args) {
                 '<div class="controls">'.
                     '<textarea id="comment" name="comment" class="input-xxlarge" rows="8"></textarea>'.
                 '</div>'.
-            '</div>'
+            '</div>',
+        'comment_notes_after' => null,
     );
     return wp_parse_args($defaults, $args);
 }

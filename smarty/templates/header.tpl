@@ -12,6 +12,19 @@
 {wp_head}
 </head>
 <body {body_class}>
+{if is_home()}
+  <div id="cover" class="visible-desktop" style="background: url('{get_header_image}') no-repeat center center fixed">
+    <div class="row">
+      <h1 class="text-center">{get_bloginfo show='name' filter='display'}</h1>
+      <p class="lead text-center">{get_bloginfo show='description'}</p>
+      <div id="down_button" class="text-center">
+        <a href="#page">
+          <i class="icon-chevron-down icon-4x"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+{/if}
 <div id="page" class="hfeed site">
   <header id="masthead" class="site-header" role="banner">
     <div class="navbar navbar-static-top navbar-inverse">
@@ -34,13 +47,13 @@
         </div>
       </div>
     </div>
-    {if is_home()}
-      <div class="container">
-        <div class="page-header">
-          <h1>{get_bloginfo show='name' filter='display'} <small>{get_bloginfo show='description'}</small></h1>
-          {header_images_carousel id="headerCarousel"}
-        </div>
-      </div>
-    {/if}
   </header>
   <div id="main" class="container">
+  {if is_home()}
+    <div class="hidden-desktop page-header">
+      <h1>
+        {get_bloginfo show='name' filter='display'}<br>
+        <small>{get_bloginfo show='description'}</small>
+      </h1>
+    </div>
+  {/if}
