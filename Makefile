@@ -11,9 +11,9 @@ BOOTSTRAP_SCRIPTS = libs/bootstrap/js/bootstrap-transition.js \
 
 build: css js
 
-css: css/style.css
+css: style.css
 
-css/style.css: less/style.less
+style.css: less/style.less
 	$(LESSC) $(LESSFLAGS) $< $@
 
 js: js/script.min.js js/bootstrap.min.js
