@@ -1,0 +1,25 @@
+{
+  "name": "mytheme",
+  "version": "0.0.0",
+  "description": "Wordpress theme ===============",
+  "main": "index.js",
+  "dependencies": {
+    "less": "~1.4.1",
+    "yuicompressor": "~2.4.8",
+    "coffee-script": "~1.6.3"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tektoh/theme.www.tektoh.org.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "95bc01db80e01f6b8bed3410c34c2334bf3037aa"
+}

@@ -8,10 +8,8 @@ Wordpress theme
     git submodule init
     git submodule update
 
-### node ###
-    npm install less
-    npm install coffee-script
-    npm install yuicompressor
+### npm ###
+    npm install
 
 ### Wordpress ###
 * メニューを作る (外観 >> メニュー)
