@@ -1,6 +1,7 @@
 .settings
 .c9revisions
 tmp
+libs
 node_modules/*
 smarty/templates_c/*
 smarty/cache/*
