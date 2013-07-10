@@ -11,14 +11,7 @@
           {/if}
         </header>
         {start_the_loop slug="content"}
-		{content_nav}
-          <nav id="content-nav" class="navigation" role="navigation">
-            <ul class="pager">
-              <li class="previous">{next_posts_link}&larr; Older{/next_posts_link}</li>
-              <li class="next">{previous_posts_link}Newer &rarr;{/previous_posts_link}</li>
-            </ul>
-          </nav>
-        {/content_nav}
+        {include file='content-nav.tpl' id='content-nav'}
       {else}
         {get_template_part slug='content' name='none'}
       {/if}

@@ -3,14 +3,7 @@
     <section id="contents" class="span9" role="main">
       {if have_posts()}
         {start_the_loop slug="content"}
-		{content_nav}
-          <nav id="content-nav" class="navigation" role="navigation">
-            <ul class="pager">
-              <li class="previous">{next_posts_link}&larr; 過去の投稿{/next_posts_link}</li>
-              <li class="next">{previous_posts_link}新しい投稿 &rarr;{/previous_posts_link}</li>
-            </ul>
-          </nav>
-        {/content_nav}
+		    {include file='content-nav.tpl' id='content-nav'}
       {else}
         {if current_user_can('edit_posts')}
           <header class="entry-header">

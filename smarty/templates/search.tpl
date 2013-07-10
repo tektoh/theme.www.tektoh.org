@@ -7,23 +7,9 @@
                         検索結果: <span>{get_search_query}</span>
                     </h1>
                 </header>
-                {content_nav}
-                    <nav id="nav-above" class="navigation" role="navigation">
-                        <ul class="pager">
-                            <li class="previous">{next_posts_link}&larr; 過去の投稿{/next_posts_link}</li>
-                            <li class="next">{previous_posts_link}新しい投稿 &rarr;{/previous_posts_link}</li>
-                        </ul>
-                    </nav>
-                {/content_nav}
+                {include file='content-nav.tpl' id='nav-above'}
                 {start_the_loop}
-                {content_nav}
-                    <nav id="nav-above" class="navigation" role="navigation">
-                        <ul class="pager">
-                            <li class="previous">{next_posts_link}&larr; 過去の投稿{/next_posts_link}</li>
-                            <li class="next">{previous_posts_link}新しい投稿 &rarr;{/previous_posts_link}</li>
-                        </ul>
-                    </nav>
-                {/content_nav}
+                {include file='content-nav.tpl' id='content-nav'}
             {else}
                 <article id="post-0" class="post no-results not-found">
                     <header class="entry-header">
