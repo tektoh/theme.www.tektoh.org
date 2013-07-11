@@ -36,15 +36,11 @@
                         </div>
                         
                     </div><!-- /.entry-content -->
-                    
+
                     <nav id="image-navigation" class="navigation" role="navigation">
                         <ul class="pager">
-                            <li class="previous">
-                                <span class="previous-image">{previous_image_link size=false text='&larr; 前へ'}</span>
-                            </li>
-                            <li class="next">
-                                <span class="next-image">{next_image_link size=false text='次へ &rarr;'}</span>
-                            </li>
+                            {mytheme_previous_image_link tag='li' class='previous'}&larr; 前へ{/mytheme_previous_image_link}
+                            {mytheme_next_image_link tag='li' class='next'}次へ &rarr;{/mytheme_next_image_link}
                         </ul>
                     </nav>
                 </article><!-- #post -->
