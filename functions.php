@@ -246,7 +246,7 @@ function theme_wp_title( $title, $sep ) {
 add_filter('wp_title', 'theme_wp_title', 10, 2 );
 
 function theme_list_comments($comment, $args, $depth) {
-    $GLOBALS['comment'] = $comment;
+  $GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
 		case 'trackback' :
@@ -257,56 +257,67 @@ function theme_list_comments($comment, $args, $depth) {
         <div class="media-body">
     		<p>ピンバック: <?php comment_author_link(); ?> <?php edit_comment_link('(編集)', '<span class="edit-link">', '</span>'); ?></p>
 	<?php
-			break;
-		default :
+		break;
+		default:
 		// Proceed with normal comments.
 		global $post;
 	?>
 	<div class="comment media" id="comment-<?php comment_ID(); ?>">
-        <span class="pull-left">
-            <?php echo get_avatar( $comment, 64 ); ?>
-        </span>
-        <div class="media-body">
+    <span class="pull-left">
+      <?php echo get_avatar( $comment, 64 ); ?>
+    </span>
+    <div class="media-body">
+      <h4 class="fn media-heading">  
     		<?php
-    			printf( '<h4 class="fn media-heading">%1$s %2$s</h4>',
-    				get_comment_author_link(),
-    				// If current post author is also comment author, make it known visually.
-    				( $comment->user_id === $post->post_author ) ? ' <span class="label">投稿作成者</span>' : ''
-    			);
-    			printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
-    				esc_url( get_comment_link( $comment->comment_ID ) ),
-    				get_comment_time( 'c' ),
-    				/* translators: 1: date, 2: time */
-    				sprintf('%1$s %2$s', get_comment_date(), get_comment_time() )
-    			);
-    		?>
+          printf('%1$s%2$s',
+            get_comment_author_link(),
+            ($comment->user_id === $post->post_author) ? ' <span class="label">投稿作成者</span>' : ''
+          );
+        ?>
+      </h4>
 
-    		<?php if ( '0' == $comment->comment_approved ) : ?>
-    			<p class="comment-awaiting-moderation alert">あなたのコメントは承認待ちです。</p>
-    		<?php endif; ?>
+   		<?php if ( '0' == $comment->comment_approved ) : ?>
+   			<p class="comment-awaiting-moderation alert">あなたのコメントは承認待ちです。</p>
+   		<?php endif; ?>
+
+      <section class="comment-content comment">
+        <?php comment_text(); ?>
+      </section><!-- /.comment-content -->
     
-    		<section class="comment-content comment">
-    			<?php comment_text(); ?>
-    			<?php edit_comment_link('編集', '<p class="edit-link">', '</p>' ); ?>
-    		</section><!-- /.comment-content -->
-    
-    		<div class="reply">
-    			<?php comment_reply_link(array_merge($args, array(
-                    'reply_text' => '返信',
-                    'depth' => $depth,
-                    'max_depth' => $args['max_depth'],
-                ))); ?>
-    		</div><!-- /.reply -->
 	<?php
 		break;
 	endswitch; // end comment_type check
 }
 
-function theme_list_comments_end_el() {
+function theme_list_comments_end_el($comment, $args, $depth) {
+  $GLOBALS['comment'] = $comment;
+  switch ( $comment->comment_type ) :
+    case 'pingback' :
+    case 'trackback' :
+      break;
+    default:
+    // Proceed with normal comments.
+    global $post;
     ?>
-    </div><!-- /.media-body -->
-    </div><!-- /.media -->
+      <section class="comment-time">
+        <small>
+          <?php
+            printf('<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+              esc_url( get_comment_link( $comment->comment_ID ) ),
+              get_comment_time( 'c' ),
+              /* translators: 1: date, 2: time */
+              sprintf('%1$s %2$s', get_comment_date(), get_comment_time() )
+            );
+          ?>
+        </small>
+      </section>
     <?php
+      break;
+  endswitch; // end comment_type check
+  ?>
+    </div><!-- /.media-body -->
+  </div><!-- /.media -->
+  <?php
 }
 
 function comment_form_default_fields_filter($args) {
