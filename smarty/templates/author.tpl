@@ -1,6 +1,6 @@
 {get_header}
   <section id="site-contents" class="row">
-    <section id="contents" class="span9" role="main">
+    <section id="contents" class="col-lg-12" role="main">
       {if have_posts()}
         {the_post}
         <header class="page-header archive-header">
@@ -26,8 +26,5 @@
         {get_template_part slug='content' name='none'}
       {/if}
     </section><!-- /#contents -->
-    <section id="sidebar" class="span3">
-      {get_sidebar}
-    </section><!-- /#sidebar -->
   </section><!-- /#site-contents -->
 {get_footer}

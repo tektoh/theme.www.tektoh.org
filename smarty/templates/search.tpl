@@ -1,6 +1,6 @@
 {get_header}
     <section id="site-content" class="row">
-        <section id="content" class="col-12 col-sm-8 col-lg-9" role="main">
+        <section id="content" class="col-lg-12" role="main">
             {if have_posts()}
                 <header class="page-header">
                     <h1 class="page-title">
@@ -21,8 +21,5 @@
                 </article><!-- /#post-0 -->
             {/if}
         </section><!-- /#content -->
-        <section id="sidebar" class="col-12 col-sm-4 col-lg-3">
-            {get_sidebar}
-        </section><!-- /#sidebar -->
     </section><!-- /#site-content -->
 {get_footer}

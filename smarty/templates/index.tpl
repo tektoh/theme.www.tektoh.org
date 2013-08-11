@@ -1,6 +1,6 @@
 {get_header}
   <section id="site-contents" class="row">
-    <section id="contents" class="col-12 col-sm-8 col-lg-9" role="main">
+    <section id="contents" class="col-lg-12" role="main">
       {if have_posts()}
         {start_the_loop slug="content"}
 		    {include file='content-nav.tpl' id='content-nav'}
@@ -19,8 +19,5 @@
         </div>
       {/if}
     </section><!-- /#contents -->
-    <section id="sidebar" class="col-12 col-sm-4 col-lg-3">
-      {get_sidebar}
-    </section><!-- /#sidebar -->
   </section><!-- /#site-contents -->
 {get_footer}

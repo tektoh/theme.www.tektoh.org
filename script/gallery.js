@@ -25,7 +25,7 @@
   Conf.viewports.medium = [
     {
       width: 1200,
-      columns: 3
+      columns: 4
     }, {
       width: 900,
       columns: 3
@@ -37,7 +37,7 @@
       columns: 2
     }, {
       width: 0,
-      columns: 1
+      columns: 2
     }
   ];
   Conf.viewports.large = [

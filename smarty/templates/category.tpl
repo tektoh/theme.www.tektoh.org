@@ -16,8 +16,5 @@
         {get_template_part slug='content' name='none'}
       {/if}
     </section><!-- /#contents -->
-    <section id="sidebar" class="col-12 col-sm-4 col-lg-3">
-      {get_sidebar}
-    </section><!-- /#sidebar -->
   </section><!-- /#site-contents -->
 {get_footer}
