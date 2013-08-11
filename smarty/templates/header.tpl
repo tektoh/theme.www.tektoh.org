@@ -29,10 +29,8 @@
   <header id="masthead" class="site-header" role="banner">
     <div class="navbar navbar-static-top navbar-inverse">
       <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+        <button type="button" id="btn-navbar" class="navbar-toggle">
+          <i class="icon-btn-navbar"></i>
         </button>
         <a class="navbar-brand" href="{home_url path='/'|esc_url}" title="{bloginfo show='name' filter='display'}" rel="home">
           {bloginfo show='name'}
