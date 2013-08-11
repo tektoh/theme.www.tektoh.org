@@ -220,13 +220,13 @@ function theme_setup() {
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	//add_theme_support( 'post-thumbnails' );
 	//set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
-  add_image_size('gallery-xxxlarge', 1300);
-  add_image_size('gallery-xxlarge', 1000);
-  add_image_size('gallery-xlarge', 700);
-  add_image_size('gallery-large', 300);
-  add_image_size('gallery-medium', 200);
-  add_image_size('gallery-small', 140);
-  add_image_size('gallery-xsmall', 100);
+  add_image_size('gallery-xxxlarge', 1170);
+  add_image_size('gallery-xxlarge', 940);
+  add_image_size('gallery-xlarge', 728);
+  add_image_size('gallery-large', 320);
+  add_image_size('gallery-medium', 240);
+  add_image_size('gallery-small', 160);
+  add_image_size('gallery-xsmall', 80);
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
