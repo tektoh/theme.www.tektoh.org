@@ -13,7 +13,7 @@ Wordpress theme
 
 TODO
 ----
-content-xxx.php 作ってない
-アイキャッチがいいかげん
-ウィジェットのレイアウトがいいかげん
+* content-xxx.php 作ってない
+* アイキャッチがいいかげん
+* ウィジェットのレイアウトがいいかげん
 
