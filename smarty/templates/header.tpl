@@ -12,11 +12,11 @@
 {wp_head}
 </head>
 <body {body_class}>
-{if is_home()}
-  <div id="cover" class="visible-desktop" style="background: url('{get_header_image}') no-repeat center center fixed">
+{if is_front_page() && !is_paged()}
+  <div id="cover" class="visible-lg" style="background: url('{get_header_image}') no-repeat center center fixed">
     <div class="row">
-      <h1 class="text-center">{get_bloginfo show='name' filter='display'}</h1>
-      <p class="lead text-center">{get_bloginfo show='description'}</p>
+      <h1 class="text-center">{bloginfo show='name' filter='display'}</h1>
+      <p class="lead text-center">{bloginfo show='description'}</p>
       <div id="down_button" class="text-center">
         <a href="#page">
           <i class="icon-chevron-down icon-4x"></i>
@@ -28,32 +28,30 @@
 <div id="page" class="hfeed site">
   <header id="masthead" class="site-header" role="banner">
     <div class="navbar navbar-static-top navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="{home_url path='/'|esc_url}" title="{get_bloginfo show='name' filter='display'}" rel="home">
-            {bloginfo show='name'}
-          </a>
-          <div class="nav-collapse collapse">
-            {wp_nav_menu menu_class='nav'}
-            <form role="search" class="navbar-search pull-right">
-              <input type="text" name="s" class="search-query" placeholder="Search">
-            </form>
-          </div>
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{home_url path='/'|esc_url}" title="{bloginfo show='name' filter='display'}" rel="home">
+          {bloginfo show='name'}
+        </a>
+        <div class="nav-collapse collapse navbar-responsive-collapse">
+          {wp_nav_menu menu_class='nav navbar-nav'}
+          <form role="search" class="navbar-form pull-right">
+            <input type="text" name="s" class="search-query" placeholder="Search">
+          </form>
         </div>
-      </div>
-    </div>
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
   </header>
   <div id="main" class="container">
-  {if is_home()}
-    <div class="hidden-desktop page-header">
+  {if is_front_page() && !is_paged()}
+    <div class="hidden-lg page-header">
       <h1>
-        {get_bloginfo show='name' filter='display'}<br>
-        <small>{get_bloginfo show='description'}</small>
+        {bloginfo show='name' filter='display'}<br>
+        <small>{bloginfo show='description'}</small>
       </h1>
     </div>
   {/if}

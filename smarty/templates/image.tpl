@@ -1,6 +1,6 @@
 {get_header}
     <section id="site-content" class="row">
-        <section id="content" class="span12" role="main">
+        <section id="content" class="col-lg-12" role="main">
             {if have_posts()}{the_post}
                 <article id="post-{the_ID()}" {post_class class='image-attachment'}>
                     <div class="entry-content">

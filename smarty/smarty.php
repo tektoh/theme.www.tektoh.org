@@ -1,9 +1,8 @@
 <?php
 
-define('WP_THEME_PATH', dirname(dirname(__FILE__)));
 define('WP_SMARTY_PATH', dirname(__FILE__));
 
-require(WP_THEME_PATH.'/libs/smarty/distribution/libs/Smarty.class.php');
+require(WP_SMARTY_PATH.'/libs/Smarty.class.php');
 
 class WpSmarty extends Smarty {
 	function __construct() {
@@ -19,6 +18,6 @@ class WpSmarty extends Smarty {
 		$this->caching = false;
 		$this->cache_lifetime = 10;
         
-        $this->assign( "globals", $GLOBALS );
+    $this->assign( "globals", $GLOBALS );
 	}
 }

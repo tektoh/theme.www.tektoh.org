@@ -218,8 +218,15 @@ function theme_setup() {
 	) );
 
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
-	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
+	//add_theme_support( 'post-thumbnails' );
+	//set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
+  add_image_size('gallery-xxxlarge', 1300);
+  add_image_size('gallery-xxlarge', 1000);
+  add_image_size('gallery-xlarge', 700);
+  add_image_size('gallery-large', 300);
+  add_image_size('gallery-medium', 200);
+  add_image_size('gallery-small', 140);
+  add_image_size('gallery-xsmall', 100);
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
@@ -324,32 +331,32 @@ function comment_form_default_fields_filter($args) {
     
     $fields = array(
         'author' =>
-            '<div class="control-group">'.
-                '<label class="control-label" for="author">'.
+            '<div class="form-group">'.
+                '<label class="col-lg-2 control-label" for="author">'.
                     '名前'.
                     '<span class="required">*</span>'.
                 '</label>'.
-                '<div class="controls">'.
-                    '<input id="author" name="author" class="input-large" type="text" required>'.
+                '<div class="col-lg-10">'.
+                    '<input id="author" name="author" class="form-control" type="text" required>'.
                 '</div>'.
             '</div>',
         'email' =>
-            '<div class="control-group">'.
-                '<label class="control-label" for="email">'.
+            '<div class="form-group">'.
+                '<label class="col-lg-2 control-label" for="email">'.
                     'メールアドレス'.
                     '<span class="required">*</span>'.
                 '</label>'.
-                '<div class="controls">'.
-                    '<input id="email" name="email" class="input-large" type="email" required>'.
+                '<div class="col-lg-10">'.
+                    '<input id="email" name="email" class="form-control" type="email" required>'.
                 '</div>'.
             '</div>',
         'url' =>
-            '<div class="control-group">'.
-                '<label class="control-label" for="url">'.
+            '<div class="form-group">'.
+                '<label class="col-lg-2 control-label" for="url">'.
                     'ウェブサイト'.
                 '</label>'.
-                '<div class="controls">'.
-                    '<input id="url" name="url" class="input-xxlarge" type="url">'.
+                '<div class="col-lg-10">'.
+                    '<input id="url" name="url" class="form-control" type="url">'.
                 '</div>'.
             '</div>'
     );
@@ -361,12 +368,12 @@ add_filter('comment_form_default_fields', 'comment_form_default_fields_filter');
 function comment_form_defaults_filter($args) {
     $defaults = array(
         'comment_field' =>
-            '<div class="control-group">'.
-                '<label class="control-label" for="comment">'.
+            '<div class="form-group">'.
+                '<label class="col-lg-2 control-label" for="comment">'.
                     'コメント'.
                 '</label>'.
-                '<div class="controls">'.
-                    '<textarea id="comment" name="comment" class="input-xxlarge" rows="8"></textarea>'.
+                '<div class="col-lg-10">'.
+                    '<textarea id="comment" name="comment" class="form-control" rows="8"></textarea>'.
                 '</div>'.
             '</div>',
         'comment_notes_after' => null,
@@ -375,151 +382,146 @@ function comment_form_defaults_filter($args) {
 }
 add_filter('comment_form_defaults', 'comment_form_defaults_filter');
 
-function gallery2_shortcode($attr) {
-    $post = get_post();
+function theme_gallery_shortcode($attr) {
+  $post = get_post();
 
-    static $instance = 0;
-    $instance++;
+  static $instance = 0;
+  $instance++;
 
-    if ( ! empty( $attr['ids'] ) ) {
-        // 'ids' is explicitly ordered, unless you specify otherwise.
-        if ( empty( $attr['orderby'] ) )
-            $attr['orderby'] = 'post__in';
-        $attr['include'] = $attr['ids'];
+  if (!empty( $attr['ids'])) {
+    if (empty($attr['orderby'])) {
+      $attr['orderby'] = 'post__in';
     }
+    $attr['include'] = $attr['ids'];
+  }
 
-    // Allow plugins/themes to override the default gallery template.
-    $output = apply_filters('post_gallery', '', $attr);
-    if ( $output != '' )
-        return $output;
-
-    // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-    if ( isset( $attr['orderby'] ) ) {
-        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-        if ( !$attr['orderby'] )
-            unset( $attr['orderby'] );
-    }
-
-
-	static $sizes = array(
-		'thumbnail' => array('columns' => 5),
-		'medium'    => array('columns' => 3),
-		'large'     => array('columns' => 1),
-		'full'      => array('columns' => 1),
-	);
-
-	if (!empty($attr['size'])) {
-		if (!array_key_exists($attr['size'], $sizes)) {
-			$attr['size'] = 'thumbnail';
-		}
-		if (empty($attr['columns'])) {
-			 $attr['columns'] = $sizes[$attr['size']]['columns'];
-		}
-	}
-
-    extract(shortcode_atts(array(
-        'order'      => 'ASC',
-        'orderby'    => 'menu_order ID',
-        'id'         => $post->ID,
-        'itemtag'    => 'ul',
-        'icontag'    => 'li',
-        'captiontag' => 'p',
-        'columns'    => 3,
-        'size'       => 'medium',
-        'include'    => '',
-        'exclude'    => ''
-    ), $attr));
-
-    $id = intval($id);
-    if ( 'RAND' == $order )
-        $orderby = 'none';
-
-    if ( !empty($include) ) {
-        $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-
-        $attachments = array();
-        foreach ( $_attachments as $key => $val ) {
-            $attachments[$val->ID] = $_attachments[$key];
-        }
-    } elseif ( !empty($exclude) ) {
-        $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-    } else {
-        $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-    }
-
-    if ( empty($attachments) )
-        return '';
-
-    if ( is_feed() ) {
-        $output = "\n";
-        foreach ( $attachments as $att_id => $attachment )
-            $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
-        return $output;
-    }
-
-    $itemtag = tag_escape($itemtag);
-    $captiontag = tag_escape($captiontag);
-    $icontag = tag_escape($icontag);
-    $valid_tags = wp_kses_allowed_html( 'post' );
-    if ( ! isset( $valid_tags[ $itemtag ] ) )
-        $itemtag = 'dl';
-    if ( ! isset( $valid_tags[ $captiontag ] ) )
-        $captiontag = 'dd';
-    if ( ! isset( $valid_tags[ $icontag ] ) )
-        $icontag = 'dt';
-
-    $columns = intval($columns);
-    $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-    $float = is_rtl() ? 'right' : 'left';
-
-    $selector = "gallery-{$instance}";
-
-    $output = '<ul class="gallery gallery-columns-'.$columns.'">';
-    $i = 0;
-    foreach ( $attachments as $id => $attachment ) {
-		$id = intval($id);
-		$_post = get_post( $id );
-
-		if (empty($_post) || ('attachment' != $_post->post_type) || !wp_get_attachment_url( $_post->ID )) {
-			continue;
-		}
-
-        $url = get_attachment_link( $_post->ID );
-        $post_title = esc_attr($_post->post_title);
-		$permalink = isset($attr['link']) && 'file' == $attr['link'] ? false : true;
-
-		if ($size && 'none' != $size) {
-			$link_text = wp_get_attachment_image($id, $size, false);
-		} else {
-			$link_text = '';
-		}
-
-		if (trim($link_text) == '') {
-			$link_text = $_post->post_title;
-		}
-
-		$link = apply_filters( 'wp_get_attachment_link',
-			'<a href="'.$url.'" class="gallery-img" title="'.$post_title.'">'.$link_text.'</a>',
-			$id, $size, $permalink, false, false);
-
-        $output .=
-            '<li class="gallery-img-list">'.
-				'<div class="gallery-img-wrap">'.$link.'</div>';
-		$output .=
-			'</li>';
-	}
-	$output .=
-		'</ul>';
-
-	static $enqueue_script = false;
-    if (!enqueue_script) {
-      wp_enqueue_script('theme_gallery_script', get_template_directory_uri().'/js/gallery.js', array(), '1.0', true);
-      $enqueue_script = true;
-    }
-
+  $output = apply_filters('post_gallery', '', $attr);
+  if ($output != '') {
     return $output;
+  }
+
+  if (isset($attr['orderby'])) {
+    $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+    if (!$attr['orderby']) {
+      unset( $attr['orderby'] );
+    }
+  }
+
+  extract(shortcode_atts(array(
+    'order'      => 'ASC',
+    'orderby'    => 'menu_order ID',
+    'id'         => $post->ID,
+    'columns'    => 6,
+    'size'       => 'thumbnail',
+    'include'    => '',
+    'exclude'    => ''
+  ), $attr));
+
+  $id = intval($id);
+
+  if ($order == 'RAND') {
+    $orderby = 'none';
+  }
+
+  if (!empty($include)) {
+    $_attachments = get_posts(array(
+      'include' => $include,
+      'post_status' => 'inherit',
+      'post_type' => 'attachment',
+      'post_mime_type' => 'image',
+      'order' => $order,
+      'orderby' => $orderby,
+    ));
+
+    $attachments = array();
+    foreach ( $_attachments as $key => $val ) {
+      $attachments[$val->ID] = $_attachments[$key];
+    }
+  } elseif (!empty($exclude)) {
+    $attachments = get_children(array(
+      'post_parent' => $id,
+      'exclude' => $exclude,
+      'post_status' => 'inherit',
+      'post_type' => 'attachment',
+      'post_mime_type' => 'image',
+      'order' => $order,
+      'orderby' => $orderby
+    ));
+  } else {
+    $attachments = get_children(array(
+      'post_parent' => $id,
+      'post_status' => 'inherit',
+      'post_type' => 'attachment',
+      'post_mime_type' => 'image',
+      'order' => $order,
+      'orderby' => $orderby
+    ));
+  }
+
+  if (empty($attachments)) {
+    return '';
+  }
+
+  if (is_feed()) {
+    $output = "\n";
+    foreach ($attachments as $att_id => $attachment) {
+      $output .= wp_get_attachment_link($att_id, 'large', true) . "\n";
+    }
+    return $output;
+  }
+
+  $selector = "gallery-{$instance}";
+
+  $output = '<div id="'.$selector.'" class="gallery gallery-size-'.$size.'">';
+  foreach ($attachments as $id => $attachment) {
+    $id = intval($id);
+    $_post = get_post($id);
+
+    if (empty($_post) || ('attachment' != $_post->post_type) || !wp_get_attachment_url($_post->ID)) {
+      continue;
+    }
+
+    $url = get_attachment_link($_post->ID);
+    $post_title = esc_attr($_post->post_title);
+    $permalink = isset($attr['link']) && 'file' == $attr['link'] ? false : true;
+
+    if ($size && $size != 'none') {
+      $link_text = wp_get_attachment_image($id, $size, false);
+    } else {
+      $link_text = '';
+    }
+
+    if (trim($link_text) == '') {
+      $link_text = $_post->post_title;
+    }
+
+    $xxxlarge = wp_get_attachment_image_src($id, 'gallery-xxxlarge', false);
+    $xxlarge  = wp_get_attachment_image_src($id, 'gallery-xxlarge', false);
+    $xlarge   = wp_get_attachment_image_src($id, 'gallery-xlarge', false);
+    $large    = wp_get_attachment_image_src($id, 'gallery-large', false);
+    $medium   = wp_get_attachment_image_src($id, 'gallery-medium', false);
+    $small    = wp_get_attachment_image_src($id, 'gallery-small', false);
+    $xsmall   = wp_get_attachment_image_src($id, 'gallery-xsmall', false);
+
+    $output .= 
+      '<div class="gallery-item" data-href="'.$url.'" data-title="'.$post_title.'">'.
+        '<div class="gallery-image-data" data-src="'.$xxxlarge[0].'" data-min-width="1300"></div>'.
+        '<div class="gallery-image-data" data-src="'.$xxlarge[0].'" data-min-width="1000"></div>'.
+        '<div class="gallery-image-data" data-src="'.$xlarge[0].'" data-min-width="700"></div>'.
+        '<div class="gallery-image-data" data-src="'.$large[0].'" data-min-width="300"></div>'.
+        '<div class="gallery-image-data" data-src="'.$medium[0].'" data-min-width="200"></div>'.
+        '<div class="gallery-image-data" data-src="'.$small[0].'" data-min-width="140"></div>'.
+        '<div class="gallery-image-data" data-src="'.$xsmall[0].'"></div>'.
+        '<noscript>'.
+          '<a href="'.$url.'" title="'.$post_title.'"><img src="'.$medium[0].'" alt="'.$post_title.'"/>'.
+        '</noscript>'.
+      '</div>';
+  }
+  $output .= '</div>';
+
+  return $output;
 }
-add_shortcode('gallery', 'gallery2_shortcode');
+add_shortcode('gallery', 'theme_gallery_shortcode');
 
 function theme_scripts_styles() {
     global $wp_styles;
@@ -528,9 +530,11 @@ function theme_scripts_styles() {
         wp_enqueue_script( 'comment-reply' );
     }
 
-    wp_enqueue_script('theme-script-jquery', get_template_directory_uri().'/js/jquery-1.9.1.min.js', array(), false, true);
-
+    wp_enqueue_script('theme-script-jquery', get_template_directory_uri().'/js/jquery-1.10.2.min.js', array(), false, true);
+    wp_enqueue_script('theme-script-jquery-migrate', get_template_directory_uri().'/js/jquery-migrate-1.2.1.min.js', array(), false, true);
     wp_enqueue_script('theme-script-bootstrap', get_template_directory_uri().'/js/bootstrap.min.js', array(), false, true);
+    wp_enqueue_script('theme-script-jquery-masonry', get_template_directory_uri().'/js/jquery.masonry-3.1.1.min.js', array(), false, true);
+    wp_enqueue_script('theme-script-imagesloaded', get_template_directory_uri().'/js/imagesloaded.pkgd-3.0.4.min.js', array(), false, true);
     wp_enqueue_script('theme-script', get_template_directory_uri().'/js/script.min.js', array(), '1.0', true);
 
     wp_enqueue_style('theme-style', get_stylesheet_uri());

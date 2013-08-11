@@ -1,7 +1,7 @@
 <?php
 
-require_once(WP_SMARTY_PATH.'/libs/mytheme_smarty_pager.php');
-require_once(WP_SMARTY_PATH.'/libs/mytheme_smarty_adjacent_image_link.php');
+require_once(WP_SMARTY_PATH.'/plugins/libs/mytheme_smarty_pager.php');
+require_once(WP_SMARTY_PATH.'/plugins/libs/mytheme_smarty_adjacent_image_link.php');
 
 function smarty_block_mytheme_next_image_link($params, $content, $template, &$repeat)
 {

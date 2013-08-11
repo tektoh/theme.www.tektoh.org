@@ -4,46 +4,34 @@ JSCOMPRESSFLAGS = --type js --charset UTF-8
 LESSC = $(NODE_BIN)/lessc
 LESSFLAGS = --yui-compress
 COFFEE = $(NODE_BIN)/coffee
-COFFEEFLAGS = -b -c -l
-BOOTSTRAP_SCRIPTS = libs/bootstrap/js/bootstrap-transition.js \
-	libs/bootstrap/js/bootstrap-carousel.js \
-	libs/bootstrap/js/bootstrap-collapse.js
+COFFEEFLAGS = -b -c
+COFFEEFILES = $(wildcard script/*.coffee)
+JSFILES = $(COFFEEFILES:.coffee=.js)
+COFFEELINT = $(NODE_BIN)/coffeelint
+
+.PHONY: clean
+
+.SUFFIXES: .js .coffee
+.coffee.js:
+	$(COFFEELINT) $<
+	$(COFFEE) $(COFFEEFLAGS) $<
 
 build: css js
 
 css: style.css
 
-style.css: less/style.less
+style.css: less/*.less less/*/*.less
 	$(LESSC) $(LESSFLAGS) $< $@
 
-js: js/script.min.js js/bootstrap.min.js
+js: js/script.min.js
 
-js/script.min.js: js/script.js
+js/script.min.js: script/script.js
 	$(YUICOMPRESSOR) $(JSCOMPRESSFLAGS) $< -o $@
 
-js/bootstrap.min.js: js/bootstrap.js
-	$(YUICOMPRESSOR) $(JSCOMPRESSFLAGS) $< -o $@
-
-js/script.js: js/carousel.js js/gallery.js js/image.js js/scroll.js
-	cat js/carousel.js js/gallery.js js/image.js js/scroll.js > $@
-
-js/carousel.js: coffee/carousel.coffee
-	$(COFFEE) $(COFFEEFLAGS) -o js $<
-
-js/gallery.js: coffee/gallery.coffee
-	$(COFFEE) $(COFFEEFLAGS) -o js $<
-
-js/image.js: coffee/image.coffee
-	$(COFFEE) $(COFFEEFLAGS) -o js $<
-
-js/scroll.js: coffee/scroll.coffee
-	$(COFFEE) $(COFFEEFLAGS) -o js $<
-
-js/bootstrap.js:
-	cat $(BOOTSTRAP_SCRIPTS) > $@
+script/script.js: $(JSFILES)
+	cat $(JSFILES) > $@
 
 clean:
 	rm -f css/style.css
-	rm -f js/script.min.js js/bootstrap.min.js
-	rm -f js/script.js js/bootstrap.js
-	rm -f js/carousel.js js/gallery.js
+	rm -f script/script.js js/script.min.js
+	rm -f $(JSFILES)

@@ -6,7 +6,8 @@
   "dependencies": {
     "less": "~1.4.1",
     "yuicompressor": "~2.4.8",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "coffeelint": "~0.5.6"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3"
