@@ -11,7 +11,7 @@ do ($ = window.jQuery) ->
   ]
   Conf.viewports.medium = [
     { width:1200, columns:4 }
-    { width: 900, columns:3 }
+    { width: 900, columns:4 }
     { width: 500, columns:3 }
     { width: 320, columns:2 }
     { width:   0, columns:2 }
@@ -56,7 +56,7 @@ do ($ = window.jQuery) ->
 
         container_width = $container.width()
         columns = getColumns container_width, gallerySize
-        item_width = Math.floor(container_width / columns)
+        item_width = Math.floor(container_width / columns) - 2
 
         $container.find('.gallery-item').each ->
           $item = $(@)
@@ -75,7 +75,7 @@ do ($ = window.jQuery) ->
             data_min_width = Number $data.attr 'data-min-width'
             data_min_width = 0 if typeof(data_min_width) is 'undefined'
 
-            if data_min_width > item_width and min_width > data_min_width
+            if data_min_width >= item_width and min_width > data_min_width
               min_width = data_min_width
               src = $data.attr 'data-src'
 

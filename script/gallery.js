@@ -28,7 +28,7 @@
       columns: 4
     }, {
       width: 900,
-      columns: 3
+      columns: 4
     }, {
       width: 500,
       columns: 3
@@ -94,7 +94,7 @@
         }
         container_width = $container.width();
         columns = getColumns(container_width, gallerySize);
-        item_width = Math.floor(container_width / columns);
+        item_width = Math.floor(container_width / columns) - 2;
         $container.find('.gallery-item').each(function() {
           var $a, $img, $item, href, min_width, src, title;
           $item = $(this);
@@ -113,7 +113,7 @@
             if (typeof data_min_width === 'undefined') {
               data_min_width = 0;
             }
-            if (data_min_width > item_width && min_width > data_min_width) {
+            if (data_min_width >= item_width && min_width > data_min_width) {
               min_width = data_min_width;
               return src = $data.attr('data-src');
             }
