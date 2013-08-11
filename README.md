@@ -4,10 +4,6 @@ Wordpress theme
 初期設定
 --------
 
-### git ###
-    git submodule init
-    git submodule update
-
 ### npm ###
     npm install
 
