@@ -223,10 +223,10 @@ function theme_setup() {
   add_image_size('gallery-xxxlarge', 1170);
   add_image_size('gallery-xxlarge', 940);
   add_image_size('gallery-xlarge', 728);
-  add_image_size('gallery-large', 320);
-  add_image_size('gallery-medium', 240);
-  add_image_size('gallery-small', 160);
-  add_image_size('gallery-xsmall', 80);
+  add_image_size('gallery-large', 480);
+  add_image_size('gallery-medium', 320);
+  add_image_size('gallery-small', 240);
+  add_image_size('gallery-xsmall', 160);
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
@@ -505,13 +505,13 @@ function theme_gallery_shortcode($attr) {
 
     $output .= 
       '<div class="gallery-item" data-href="'.$url.'" data-title="'.$post_title.'">'.
-        '<div class="gallery-image-data" data-src="'.$xxxlarge[0].'" data-min-width="1300"></div>'.
-        '<div class="gallery-image-data" data-src="'.$xxlarge[0].'" data-min-width="1000"></div>'.
-        '<div class="gallery-image-data" data-src="'.$xlarge[0].'" data-min-width="700"></div>'.
-        '<div class="gallery-image-data" data-src="'.$large[0].'" data-min-width="300"></div>'.
-        '<div class="gallery-image-data" data-src="'.$medium[0].'" data-min-width="200"></div>'.
-        '<div class="gallery-image-data" data-src="'.$small[0].'" data-min-width="140"></div>'.
-        '<div class="gallery-image-data" data-src="'.$xsmall[0].'"></div>'.
+        '<div class="gallery-image-data" data-src="'.$xxxlarge[0].'" data-min-width="1170"></div>'.
+        '<div class="gallery-image-data" data-src="'.$xxlarge[0].'" data-min-width="940"></div>'.
+        '<div class="gallery-image-data" data-src="'.$xlarge[0].'" data-min-width="728"></div>'.
+        '<div class="gallery-image-data" data-src="'.$large[0].'" data-min-width="480"></div>'.
+        '<div class="gallery-image-data" data-src="'.$medium[0].'" data-min-width="320"></div>'.
+        '<div class="gallery-image-data" data-src="'.$small[0].'" data-min-width="240"></div>'.
+        '<div class="gallery-image-data" data-src="'.$xsmall[0].'" data-min-width="0"></div>'.
         '<noscript>'.
           '<a href="'.$url.'" title="'.$post_title.'"><img src="'.$medium[0].'" alt="'.$post_title.'"/>'.
         '</noscript>'.
