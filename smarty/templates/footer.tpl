@@ -1,7 +1,7 @@
   </div><!-- /#main -->
   <div class="clearfix">
     <div class="goto-pagetop pull-right">
-      <a href="#page"><i class="icon-chevron-up icon-3x"></i></a>
+      <a href="#page"><i class="icon-chevron-up"></i></a>
     </div>
   </div>
   {if !is_page() && !is_attachment()}
