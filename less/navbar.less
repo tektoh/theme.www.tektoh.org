@@ -1,0 +1,27 @@
+.rotate-ease-out(@deg) {
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  -ms-transform: rotate(@deg);
+  -o-transform: rotate(@deg);
+  transform: rotate(@deg);
+  -webkit-transition: -webkit-transform 250ms ease-out;
+  -moz-transition: -moz-transform 250ms ease-out;
+  -o-transition: -o-transform 250ms ease-out;
+  transition: transform 250ms ease-out;
+}
+
+.icon-btn-navbar {
+  color: white;
+  font-size: 20px;
+  display: inline-block!important;
+  .rotate-ease-out(0deg);
+  &:before {
+    content: "\f0c9"; //.icon-reorder
+  }
+  &.menu-open {
+    .rotate-ease-out(-180deg);
+    &:before {
+      content: "\f00d"; //.icon-remove
+    }
+  }
+}

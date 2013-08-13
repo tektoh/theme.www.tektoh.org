@@ -3,6 +3,9 @@ YUICOMPRESSOR = $(NODE_BIN)/yuicompressor
 JSCOMPRESSFLAGS = --type js --charset UTF-8
 LESSC = $(NODE_BIN)/lessc
 LESSFLAGS = --yui-compress
+LESSMAINFILE = less/style.less
+LESSFILES = $(wildcard less/*.less)
+LESSINCLUDES = $(wildcard less/*/*.less)
 COFFEE = $(NODE_BIN)/coffee
 COFFEEFLAGS = -b -c
 COFFEEFILES = $(wildcard script/*.coffee)
@@ -20,8 +23,8 @@ build: css js
 
 css: style.css
 
-style.css: less/*.less less/*/*.less
-	$(LESSC) $(LESSFLAGS) $< $@
+style.css: $(LESSFILES) $(LESSINCLUDES)
+	$(LESSC) $(LESSFLAGS) $(LESSMAINFILE) $@
 
 js: js/script.min.js
 
