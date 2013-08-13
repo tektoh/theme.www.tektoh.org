@@ -513,7 +513,7 @@ function theme_gallery_shortcode($attr) {
         '<div class="gallery-image-data" data-src="'.$small[0].'" data-min-width="240"></div>'.
         '<div class="gallery-image-data" data-src="'.$xsmall[0].'" data-min-width="0"></div>'.
         '<noscript>'.
-          '<a href="'.$url.'" title="'.$post_title.'"><img src="'.$medium[0].'" alt="'.$post_title.'"/>'.
+          '<a href="'.$url.'" title="'.$post_title.'"><img src="'.$medium[0].'" alt="'.$post_title.'"/></a>'.
         '</noscript>'.
       '</div>';
   }
