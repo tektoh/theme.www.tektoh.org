@@ -46,10 +46,10 @@
   </header>
   <div id="main" class="container">
   {if is_front_page() && !is_paged()}
-    <div class="hidden-lg page-header">
-      <h1>
+    <div class="front-page-lead hidden-lg jumbotron">
+      <h2>
         {bloginfo show='name' filter='display'}<br>
         <small>{bloginfo show='description'}</small>
-      </h1>
+      </h2>
     </div>
   {/if}
