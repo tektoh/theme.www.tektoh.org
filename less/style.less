@@ -45,6 +45,10 @@ body {
         z-index: 999;
         .text-center;
       }
+      .row {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
   }
 }
@@ -188,6 +192,12 @@ h1.attachment-image-title {
     &:before {
       content: "\f00d"; //.icon-remove
     }
+  }
+}
+
+.front-page-lead {
+  @media (max-width: @screen-small) {
+    margin-top: -20px;
   }
 }
 
