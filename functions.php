@@ -332,30 +332,30 @@ function comment_form_default_fields_filter($args) {
     $fields = array(
         'author' =>
             '<div class="form-group">'.
-                '<label class="col-lg-2 control-label" for="author">'.
+                '<label class="col-sm-3 col-md-2 control-label" for="author">'.
                     '名前'.
                     '<span class="required">*</span>'.
                 '</label>'.
-                '<div class="col-lg-10">'.
+                '<div class="col-sm-9 col-md-10">'.
                     '<input id="author" name="author" class="form-control" type="text" required>'.
                 '</div>'.
             '</div>',
         'email' =>
             '<div class="form-group">'.
-                '<label class="col-lg-2 control-label" for="email">'.
+                '<label class="col-sm-3 col-md-2 control-label" for="email">'.
                     'メールアドレス'.
                     '<span class="required">*</span>'.
                 '</label>'.
-                '<div class="col-lg-10">'.
+                '<div class="col-sm-9 col-md-10">'.
                     '<input id="email" name="email" class="form-control" type="email" required>'.
                 '</div>'.
             '</div>',
         'url' =>
             '<div class="form-group">'.
-                '<label class="col-lg-2 control-label" for="url">'.
+                '<label class="col-sm-3 col-md-2 control-label" for="url">'.
                     'ウェブサイト'.
                 '</label>'.
-                '<div class="col-lg-10">'.
+                '<div class="col-sm-9 col-md-10">'.
                     '<input id="url" name="url" class="form-control" type="url">'.
                 '</div>'.
             '</div>'
@@ -369,10 +369,10 @@ function comment_form_defaults_filter($args) {
     $defaults = array(
         'comment_field' =>
             '<div class="form-group">'.
-                '<label class="col-lg-2 control-label" for="comment">'.
+                '<label class="col-sm-3 col-md-2 control-label" for="comment">'.
                     'コメント'.
                 '</label>'.
-                '<div class="col-lg-10">'.
+                '<div class="col-sm-9 col-md-10">'.
                     '<textarea id="comment" name="comment" class="form-control" rows="8"></textarea>'.
                 '</div>'.
             '</div>',

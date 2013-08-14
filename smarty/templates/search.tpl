@@ -1,6 +1,6 @@
 {get_header}
     <section id="site-content" class="row">
-        <section id="content" class="col-lg-12" role="main">
+        <section id="content" class="col-md-12" role="main">
             {if have_posts()}
                 <header class="page-header">
                     <h1 class="page-title">

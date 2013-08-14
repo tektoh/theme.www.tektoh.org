@@ -27,22 +27,26 @@
 {/if}
 <div id="page" class="hfeed site">
   <header id="masthead" class="site-header" role="banner">
-    <div class="navbar navbar-static-top navbar-inverse">
+    <nav class="navbar navbar-static-top navbar-inverse" role="navigation">
       <div class="container">
-        <button type="button" id="btn-navbar" class="navbar-toggle">
-          <i class="icon-btn-navbar"></i>
-        </button>
-        <a class="navbar-brand" href="{home_url path='/'|esc_url}" title="{bloginfo show='name' filter='display'}" rel="home">
-          {bloginfo show='name'}
-        </a>
-        <div class="nav-collapse collapse navbar-responsive-collapse">
+        <div class="navbar-header">
+          <button type="button" id="btn-navbar" class="navbar-toggle">
+            <i class="icon-btn-navbar"></i>
+          </button>
+          <a class="navbar-brand" href="{home_url path='/'|esc_url}" title="{bloginfo show='name' filter='display'}" rel="home">
+            {bloginfo show='name'}
+          </a>
+        </div><!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-responsive-collapse">
           {wp_nav_menu menu_class='nav navbar-nav'}
-          <form role="search" class="navbar-form pull-right">
-            <input type="text" name="s" class="search-query" placeholder="Search">
+          <form role="search" class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" name="s" class="form-control" placeholder="Search">
+            </div>
           </form>
-        </div>
+        </div><!-- /.collapse -->
       </div><!-- /.container -->
-    </div><!-- /.navbar -->
+    </nav>
   </header>
   <div id="main" class="container">
   {if is_front_page() && !is_paged()}
