@@ -7,7 +7,8 @@ function mytheme_smarty_pager($link, $content, $tag, $class) {
         $class = '';
       }
       $class = $class . ' ' . 'disabled';
-      $link = '<a href="#">' . $content . '</a>';
+      $link = '<a>' . $content . '</a>';
+      $title = null;
     }
     if (empty($class)) {
       $text = '<'.$tag.'>';

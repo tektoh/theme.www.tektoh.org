@@ -2,17 +2,12 @@
 
 function smarty_function_start_the_loop($params, $template)
 {
-	extract(array_merge(array(
-		'slug' => 'content',
-		'name' => null,
-        'separate_comments' => false,
-	), $params));
+  extract(array_merge(array(
+    'slug' => 'content',
+    'name' => null,
+  ), $params));
 
-	if (empty($name)) {
-		$name = get_post_format();
-	}
-
-    while (have_posts()) {
+  while (have_posts()) {
 		the_post();
 
 		if (empty($name)) {
@@ -20,10 +15,6 @@ function smarty_function_start_the_loop($params, $template)
 		} else {
 			get_template_part($slug, $name);
 		}
-        
-        if (isset($params['separate_comments'])) {
-            comments_template('', $separate_comments);
-        }
-	}
+  }
 	return $result;
 }

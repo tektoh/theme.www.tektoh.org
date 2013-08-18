@@ -8,7 +8,7 @@
                     </h1>
                 </header>
                 {include file='content-nav.tpl' id='nav-above'}
-                {start_the_loop}
+                {start_the_loop slug='content'}
                 {include file='content-nav.tpl' id='content-nav'}
             {else}
                 <article id="post-0" class="post no-results not-found">
