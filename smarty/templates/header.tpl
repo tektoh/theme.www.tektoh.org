@@ -39,7 +39,7 @@
         </div><!-- /.navbar-header -->
         <div class="collapse navbar-collapse navbar-responsive-collapse">
           {wp_nav_menu menu_class='nav navbar-nav'}
-          <form role="search" class="navbar-form navbar-right">
+          <form role="search" class="navbar-form navbar-right" action="/">
             <div class="form-group">
               <input type="text" name="s" class="form-control" placeholder="Search">
             </div>
