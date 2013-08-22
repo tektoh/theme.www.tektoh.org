@@ -12,6 +12,12 @@
 {wp_head}
 </head>
 <body {body_class}>
+<!--[if lte IE 8.0]>
+<div id="ie" class="alert alert-danger">
+  あなたがお使いのブラウザでの閲覧は推奨していません。<br>
+  <a href="http://www.google.co.jp/chrome/">ブラウザの乗換えをおすすめします。</a>
+</div>
+<![endif]-->
 {if is_front_page() && !is_paged()}
   <div id="cover" class="visible-lg" style="background: url('{get_header_image}') no-repeat center center fixed">
     <div class="row">
