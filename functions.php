@@ -220,6 +220,7 @@ function theme_setup() {
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	//add_theme_support( 'post-thumbnails' );
 	//set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
+  add_image_size('gallery-xxxxlarge', 1600);
   add_image_size('gallery-xxxlarge', 1170);
   add_image_size('gallery-xxlarge', 940);
   add_image_size('gallery-xlarge', 728);
@@ -495,23 +496,25 @@ function theme_gallery_shortcode($attr) {
       $link_text = $_post->post_title;
     }
 
-    $xxxlarge = wp_get_attachment_image_src($id, 'gallery-xxxlarge', false);
-    $xxlarge  = wp_get_attachment_image_src($id, 'gallery-xxlarge', false);
-    $xlarge   = wp_get_attachment_image_src($id, 'gallery-xlarge', false);
-    $large    = wp_get_attachment_image_src($id, 'gallery-large', false);
-    $medium   = wp_get_attachment_image_src($id, 'gallery-medium', false);
-    $small    = wp_get_attachment_image_src($id, 'gallery-small', false);
-    $xsmall   = wp_get_attachment_image_src($id, 'gallery-xsmall', false);
+	$xxxxlarge = wp_get_attachment_image_src($id, 'gallery-xxxxlarge', false);
+    $xxxlarge  = wp_get_attachment_image_src($id, 'gallery-xxxlarge', false);
+    $xxlarge   = wp_get_attachment_image_src($id, 'gallery-xxlarge', false);
+    $xlarge    = wp_get_attachment_image_src($id, 'gallery-xlarge', false);
+    $large     = wp_get_attachment_image_src($id, 'gallery-large', false);
+    $medium    = wp_get_attachment_image_src($id, 'gallery-medium', false);
+    $small     = wp_get_attachment_image_src($id, 'gallery-small', false);
+    $xsmall    = wp_get_attachment_image_src($id, 'gallery-xsmall', false);
 
     $output .= 
       '<div class="gallery-item" data-href="'.$url.'" data-title="'.$post_title.'">'.
-        '<div class="gallery-image-data" data-src="'.$xxxlarge[0].'" data-min-width="1170"></div>'.
-        '<div class="gallery-image-data" data-src="'.$xxlarge[0].'" data-min-width="940"></div>'.
-        '<div class="gallery-image-data" data-src="'.$xlarge[0].'" data-min-width="728"></div>'.
-        '<div class="gallery-image-data" data-src="'.$large[0].'" data-min-width="480"></div>'.
-        '<div class="gallery-image-data" data-src="'.$medium[0].'" data-min-width="320"></div>'.
-        '<div class="gallery-image-data" data-src="'.$small[0].'" data-min-width="240"></div>'.
-        '<div class="gallery-image-data" data-src="'.$xsmall[0].'" data-min-width="0"></div>'.
+      	'<div class="gallery-item-data" data-src="'.$xxxxlarge[0].'" data-min-width="1600"></div>'.
+        '<div class="gallery-item-data" data-src="'.$xxxlarge[0].'" data-min-width="1170"></div>'.
+        '<div class="gallery-item-data" data-src="'.$xxlarge[0].'" data-min-width="940"></div>'.
+        '<div class="gallery-item-data" data-src="'.$xlarge[0].'" data-min-width="728"></div>'.
+        '<div class="gallery-item-data" data-src="'.$large[0].'" data-min-width="480"></div>'.
+        '<div class="gallery-item-data" data-src="'.$medium[0].'" data-min-width="320"></div>'.
+        '<div class="gallery-item-data" data-src="'.$small[0].'" data-min-width="240"></div>'.
+        '<div class="gallery-item-data" data-src="'.$xsmall[0].'" data-min-width="0"></div>'.
         '<noscript>'.
           '<a href="'.$url.'" title="'.$post_title.'"><img src="'.$medium[0].'" alt="'.$post_title.'"/></a>'.
         '</noscript>'.
@@ -532,7 +535,9 @@ function theme_scripts_styles() {
 
     wp_enqueue_script('theme-script-jquery', get_template_directory_uri().'/js/jquery-1.10.2.min.js', array(), false, true);
     wp_enqueue_script('theme-script-jquery-migrate', get_template_directory_uri().'/js/jquery-migrate-1.2.1.min.js', array(), false, true);
-    wp_enqueue_script('theme-script-bootstrap', get_template_directory_uri().'/js/bootstrap.min.js', array(), false, true);
+	wp_enqueue_script('theme-script-underscore', get_template_directory_uri().'/js/underscore-1.5.1.min.js', array(), false, true);
+	wp_enqueue_script('theme-script-backborn', get_template_directory_uri().'/js/backborn-1.0.0.min.js', array(), false, true);
+    wp_enqueue_script('theme-script-bootstrap', get_template_directory_uri().'/js/bootstrap.min.js', array(), '3.0.0', true);
     wp_enqueue_script('theme-script-jquery-masonry', get_template_directory_uri().'/js/jquery.masonry-3.1.1.min.js', array(), false, true);
     wp_enqueue_script('theme-script-imagesloaded', get_template_directory_uri().'/js/imagesloaded.pkgd-3.0.4.min.js', array(), false, true);
     wp_enqueue_script('theme-script', get_template_directory_uri().'/js/script.min.js', array(), '1.0', true);
