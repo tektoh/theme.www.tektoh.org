@@ -1,5 +1,6 @@
 do ($ = window.jQuery) ->
   "use strict"
+
   $(document).ready ->
     resize = ->
       height = $(window).height()

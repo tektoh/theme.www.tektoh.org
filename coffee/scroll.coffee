@@ -1,4 +1,6 @@
 do ($ = window.jQuery) ->
+  "use strict"
+
   $('a[href^=#]').click ->
     speed = 500
     href = $(@).attr 'href'
