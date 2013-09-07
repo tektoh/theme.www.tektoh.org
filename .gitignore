@@ -6,3 +6,4 @@ tmp
 node_modules/*
 smarty/templates_c/*
 smarty/cache/*
+smarty/plugins/function.adsense.php
