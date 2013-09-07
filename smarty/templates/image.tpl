@@ -34,9 +34,8 @@
                             </a>)
                             {edit_post_link link='編集' before='<span class="edit-link">' after='</span>'}
                         </div>
-                        
                     </div><!-- /.entry-content -->
-
+                    <div class="adsense">{adsense}</div>
                     <nav id="image-navigation" class="navigation" role="navigation">
                         <ul class="pager">
                             {mytheme_previous_image_link tag='li' class='previous'}&larr; 前へ{/mytheme_previous_image_link}
