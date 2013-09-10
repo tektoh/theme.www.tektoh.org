@@ -7826,6 +7826,11 @@ fieldset[disabled] .form-submit input[type=submit].active {
   margin-top: -5em;
   text-align: center;
 }
+@media (max-width: 335px) {
+  .adsense {
+    margin-left: -15px;
+  }
+}
 .image-attachment .adsense {
   margin-top: auto;
 }
