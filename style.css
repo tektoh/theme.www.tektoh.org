@@ -7531,6 +7531,82 @@ body.home #cover .row {
 .entry-content + .entry-meta {
   margin: 20px auto 0;
 }
+.presentation > article {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  color: inherit;
+  background-color: #eeeeee;
+}
+.presentation > article h1 {
+  line-height: 1;
+  color: inherit;
+}
+.presentation > article p {
+  line-height: 1.4;
+}
+.container .presentation > article {
+  border-radius: 6px;
+}
+@media screen and (min-width: 768px) {
+  .presentation > article {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .container .presentation > article {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .presentation > article h1 {
+    font-size: 63px;
+  }
+}
+.presentation > article:nth-of-type(1) {
+  text-align: center;
+  background-color: #fff;
+}
+.presentation > article:nth-of-type(1n+2) {
+  opacity: .0;
+  line-height: 1.4;
+  background-color: #fff;
+}
+.presentation .page-header {
+  border-bottom: 3px dashed #333;
+}
+.presentation .content-article {
+  border-bottom: none;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 0;
+}
+.presentation .content-article .entry-header {
+  text-align: center;
+  margin: 20px 0;
+}
+.presentation .content-article p,
+.presentation .content-article li,
+.presentation .content-article h2,
+.presentation .content-article h3,
+.presentation .content-article h4,
+.presentation .content-article h5 {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+.presentation .content-article h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  line-height: 2em;
+  padding-top: 1em;
+}
+.presentation .content-article h3,
+.presentation .content-article h4,
+.presentation .content-article h5 {
+  font-size: 1.6em;
+  font-weight: bold;
+  line-height: 1.9em;
+}
 img.attachment-image {
   display: block;
   max-width: 100%;

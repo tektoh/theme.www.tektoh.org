@@ -4,7 +4,7 @@
       <a href="#page"><i class="icon-chevron-up"></i></a>
     </div>
   </div>
-  {if !is_page() && !is_attachment()}
+  {if !is_page() && !is_attachment() && !is_singular('presentations')}
     <section id="footer-menu">
       <div class="container">
         {get_sidebar}
