@@ -369,7 +369,7 @@
   "use strict";
   return $(document).ready(function() {
     var aIndex;
-    $('.content-article').css({
+    $('.presentation .content-article').css({
       'min-height': document.documentElement.clientHeight
     });
     aIndex = 1;
