@@ -196,6 +196,7 @@ add_action( 'customize_preview_init', 'twentytwelve_customize_preview_js' );
 
 /* ---------------------------------------------------------------------------- */
 
+/*
 function theme_create_post_type() {
   register_post_type('presentations', array(
     'label' => 'プレゼンテーション',
@@ -208,6 +209,7 @@ function theme_create_post_type() {
   ));
 }
 add_action('init', 'theme_create_post_type');
+*/
 
 function theme_setup() {
 	// This theme styles the visual editor with editor-style.css to match the theme style.

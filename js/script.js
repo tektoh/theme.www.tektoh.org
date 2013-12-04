@@ -367,33 +367,6 @@
 
 (function($) {
   "use strict";
-  return $(document).ready(function() {
-    var aIndex;
-    $('.presentation .content-article').css({
-      'min-height': document.documentElement.clientHeight
-    });
-    aIndex = 1;
-    return $(window).scroll(function() {
-      var scrollBottom;
-      scrollBottom = $(window).scrollTop() + $(window).height();
-      return $("#article-" + aIndex).each(function() {
-        var $article, articleOffset;
-        $article = $(this);
-        articleOffset = $article.offset();
-        console.log(articleOffset.top, scrollBottom);
-        if ((articleOffset.top + 180) < scrollBottom) {
-          $article.animate({
-            'opacity': '1.0'
-          }, 2000);
-          return aIndex++;
-        }
-      });
-    });
-  });
-})(window.jQuery);
-
-(function($) {
-  "use strict";
   return $('a[href^=#]').click(function() {
     var href, position, speed, target;
     speed = 500;
