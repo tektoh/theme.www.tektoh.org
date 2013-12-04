@@ -7440,6 +7440,9 @@ h5 a:hover,
 h6 a:hover {
   color: #333333;
 }
+.container {
+  max-width: 980px;
+}
 body.tag {
   color: #333333;
 }
