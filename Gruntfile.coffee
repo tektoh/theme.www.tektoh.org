@@ -28,6 +28,8 @@ module.exports = (grunt)->
 
     less:
       production:
+        options:
+          compress: true
         files:
           'style.css': 'less/style.less'
 
