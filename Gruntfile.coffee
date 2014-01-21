@@ -30,6 +30,9 @@ module.exports = (grunt)->
       production:
         options:
           compress: true
+          sourceMap: true
+          sourceMapFilename: 'style.css.map'
+          sourceMapRootpath: '/wp-content/themes/mytheme'
         files:
           'style.css': 'less/style.less'
 
