@@ -276,7 +276,7 @@ function theme_list_comments($comment, $args, $depth) {
 		// Display trackbacks differently than normal comments.
 	?>
 	<div class="comment media" id="comment-<?php comment_ID(); ?>">
-        <span class="pull-left" style="width: 64px; height: 64px;"></span>
+        <span class="pull-left" style="width: 64px; height: 16px;"></span>
         <div class="media-body">
     		<p>ピンバック: <?php comment_author_link(); ?> <?php edit_comment_link('(編集)', '<span class="edit-link">', '</span>'); ?></p>
 	<?php
@@ -564,3 +564,14 @@ function theme_scripts_styles() {
 }
 add_action('wp_enqueue_scripts', 'theme_scripts_styles');
 
+function theme_remove_more_jump_link($link) { 
+    $offset = strpos($link, '#more-');
+    if ($offset) {
+        $end = strpos($link, '"',$offset);
+    }
+    if ($end) {
+        $link = substr_replace($link, '', $offset, $end-$offset);
+    }
+    return $link;
+}
+add_filter('the_content_more_link', 'theme_remove_more_jump_link');
