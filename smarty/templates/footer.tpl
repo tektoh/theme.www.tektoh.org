@@ -1,7 +1,7 @@
   </div><!-- /#main -->
   <div class="clearfix">
     <div class="goto-pagetop pull-right">
-      <a href="#page"><i class="icon-chevron-up"></i></a>
+      <a href="#page"><i class="glyphicon glyphicon-chevron-up"></i></a>
     </div>
   </div>
   {if !is_page() && !is_attachment() && !is_singular('presentations')}
@@ -13,7 +13,7 @@
   {/if}
   <footer id="colophon" role="contentinfo">
     <section class="container">
-      <p class="text-muted copyright">&copy; tektoh.org</p>
+      <p class="text-muted copyright">&copy; sig11.io</p>
     </section>
   </footer>
 </div><!-- /#page -->

@@ -25,7 +25,7 @@
       <p class="lead text-center">{bloginfo show='description'}</p>
       <div id="down_button" class="text-center">
         <a href="#page">
-          <i class="icon-chevron-down icon-4x"></i>
+          <i class="glyphicon glyphicon-chevron-down icon-4x"></i>
         </a>
       </div>
     </div>
@@ -33,7 +33,7 @@
 {/if}
 <div id="page" class="hfeed site">
   <header id="masthead" class="site-header" role="banner">
-    <nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+    <nav class="navbar navbar-static-top navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" id="btn-navbar" class="navbar-toggle">

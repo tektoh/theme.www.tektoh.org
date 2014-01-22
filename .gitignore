@@ -4,6 +4,7 @@
 tmp
 /libs
 node_modules/*
+bower_components/*
 smarty/templates_c/*
 smarty/cache/*
 smarty/plugins/function.adsense.php
