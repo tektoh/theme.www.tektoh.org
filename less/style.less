@@ -15,17 +15,24 @@ License URI:
 // Bootstrap
 @import "../bower_components/bootstrap/less/variables.less";
 // Overwrite variables
-@navbar-default-bg: #fff;
-@navbar-default-brand-color: #000;
-@text-color: #000;
-@link-color: #800;
-@link-hover-color: #f00;
-@navbar-default-brand-color: #333;
-@navbar-default-brand-hover-color: #777;
-@navbar-default-link-color: #333;
-@navbar-default-link-hover-color: #777;
-@jumbotron-bg: #fff;
-@pagination-border: #fff;
+@base-color:                       #fff;
+@main-color:                       #000;
+@gray-darker:                      lighten(@main-color, 13.5%);
+@gray-dark:                        lighten(@main-color, 20%);
+@gray:                             lighten(@main-color, 33.5%);
+@gray-light:                       lighten(@main-color, 60%);
+@gray-lighter:                     lighten(@main-color, 93.5%);
+@navbar-default-bg:                @base-color;
+@navbar-default-brand-color:       @main-color;
+@text-color:                       @main-color;
+@link-color:                       @gray;
+@link-hover-color:                 @gray-darker;
+@navbar-default-brand-color:       @main-color;
+@navbar-default-brand-hover-color: lighten(@navbar-default-brand-color, 30%);
+@navbar-default-link-color:        @main-color;
+@navbar-default-link-hover-color:  lighten(@navbar-default-link-color, 30%);
+@jumbotron-bg:                     @base-color;
+@pagination-border:                @base-color;
 @icon-font-path: "bower_components/bootstrap/dist/fonts/";
 @import "../bower_components/bootstrap/less/mixins.less";
 @import "../bower_components/bootstrap/less/normalize.less";
