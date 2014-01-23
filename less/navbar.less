@@ -12,16 +12,22 @@
 
 .icon-btn-navbar {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   display: inline-block!important;
   .rotate-ease-out(0deg);
+  .glyphicon;
+  color: #000;
   &:before {
-    content: "\f0c9"; //.icon-reorder
+    content: "\e056"; //.icon-reorder
   }
   &.menu-open {
     .rotate-ease-out(-180deg);
     &:before {
-      content: "\f00d"; //.icon-remove
+      content: "\e014"; //.icon-remove
     }
   }
+}
+
+.navbar-toggle {
+  padding: 5px 10px 3px;
 }
