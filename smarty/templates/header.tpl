@@ -15,7 +15,7 @@
 <!--[if lte IE 8.0]>
 <div id="ie" class="alert alert-danger">
   あなたがお使いのブラウザでの閲覧は推奨していません。<br>
-  <a href="http://www.google.co.jp/chrome/">ブラウザの乗換えをおすすめします。</a>
+  <a href="http://browsehappy.com/">ブラウザの乗換えをおすすめします。</a>
 </div>
 <![endif]-->
 {if is_front_page() && !is_paged()}
