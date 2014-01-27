@@ -3,7 +3,7 @@
     <section id="content" class="col-md-12" role="main">
       {if have_posts()}{the_post}
         {get_template_part slug='content'}
-        <div class="adsense">{adsense}</div>
+        <div class="adsense adsense-single">{adsense}</div>
         <nav id="post-navigation" class="navigation" role="navigation">
           <ul class="pager">
             {mytheme_previous_post_link tag='li' class='previous'}&larr; 過去の投稿{/mytheme_previous_post_link}
