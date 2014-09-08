@@ -19,6 +19,7 @@ do ($ = window.jQuery) ->
 
   $(document).ready ->
     $('.widget-area').masonry
+      columnWidth: 100
       itemSelector: '.widget'
 
 do ($ = window.jQuery) ->

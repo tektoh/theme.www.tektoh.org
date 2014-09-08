@@ -25,6 +25,7 @@
   "use strict";
   return $(document).ready(function() {
     return $('.widget-area').masonry({
+      columnWidth: 100,
       itemSelector: '.widget'
     });
   });
